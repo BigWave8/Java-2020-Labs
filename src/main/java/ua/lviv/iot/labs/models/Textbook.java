@@ -39,4 +39,8 @@ public class Textbook extends AbstractPaperProducts {
         this.subject = subject;
     }
 
+    public String getHeaders() {
+        return super.getHeaders() + "edition" + "circulation" + "subject";
+    }
+
 }

@@ -47,4 +47,8 @@ public abstract class AbstractStationery {
         this.targetAge = targetAge;
     }
 
+    public String getHeaders() {
+        return "priceInHryvnia" + "producer" + "barCode" + "targetAge";
+    }
+
 }

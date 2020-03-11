@@ -36,5 +36,9 @@ public abstract class AbstractPaperProducts extends AbstractStationery {
     public void setDensityInGramsPerSguareMeter(int densityInGramsPerSguareMeter) {
         this.densityInGramsPerSguareMeter = densityInGramsPerSguareMeter;
     }
+    
+    public String getHeaders() {
+        return super.getHeaders() + "format" + "article" + "densityInGramsPerSguareMeter";
+    }
 
 }

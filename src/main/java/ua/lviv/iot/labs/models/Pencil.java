@@ -40,4 +40,8 @@ public class Pencil extends AbstractWritingInstruments {
         this.hardnessOfState = hardnessOfState;
     }
 
+    public String getHeaders() {
+        return super.getHeaders() + "mechanical" + "hasEraser" + "hardnessOfState";
+    }
+
 }

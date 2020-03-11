@@ -29,4 +29,8 @@ public class Paints extends AbstractWritingAccessories {
         this.numberOfColours = numberOfColours;
     }
 
+    public String getHeaders() {
+        return super.getHeaders() + "type" + "numberOfColours";
+    }
+
 }

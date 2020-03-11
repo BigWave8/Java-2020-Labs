@@ -2,13 +2,14 @@ package ua.lviv.iot.labs.manager;
 
 import java.util.Comparator;
 import java.util.List;
-
 import ua.lviv.iot.labs.models.AbstractStationery;
 import ua.lviv.iot.labs.models.SortType;
 
 public class ShopManager {
 
     private static final SortByPrice SORT_BY_PRICE = new SortByPrice();
+
+    private static final SortByBarCodeComparator SORT_BY_BARCOD_COMPARATOR = new ShopManager().new SortByBarCodeComparator();
 
     public static void sortByPrice(List<AbstractStationery> stationeries, SortType sortType) {
 
@@ -28,7 +29,7 @@ public class ShopManager {
     }
 
     public static void sortByProducer(List<AbstractStationery> stationeries, SortType sortType) {
-        Comparator<AbstractStationery> comparator = new Comparator<AbstractStationery>() {
+        Comparator<AbstractStationery> producerComparator = new Comparator<AbstractStationery>() {
 
             @Override
             public int compare(AbstractStationery firstStationery,
@@ -36,15 +37,14 @@ public class ShopManager {
                 return firstStationery.getProducer().compareTo(secondStationery.getProducer());
             }
         };
-        stationeries.sort(sortType == SortType.ASCENDING ? comparator : comparator.reversed());
+        stationeries.sort(sortType == SortType.ASCENDING ? producerComparator
+                : producerComparator.reversed());
 
     }
 
-    public static void sortByBarCode(List<AbstractStationery> stationeries, SortType sortType,
-            SortByBarCodeComparator barCodeComparator) {
-
-        stationeries.sort(
-                sortType == SortType.ASCENDING ? barCodeComparator : barCodeComparator.reversed());
+    public static void sortByBarCode(List<AbstractStationery> stationeries, SortType sortType) {
+        stationeries.sort(sortType == SortType.ASCENDING ? SORT_BY_BARCOD_COMPARATOR
+                : SORT_BY_BARCOD_COMPARATOR.reversed());
     }
 
     public class SortByBarCodeComparator implements Comparator<AbstractStationery> {

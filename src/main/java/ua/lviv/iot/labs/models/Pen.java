@@ -30,4 +30,8 @@ public class Pen extends AbstractWritingInstruments {
         this.type = type;
     }
 
+    public String getHeaders() {
+        return super.getHeaders() + "thicknessOfRodInMillimeters" + "type";
+    }
+
 }

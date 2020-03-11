@@ -28,5 +28,9 @@ public class Notebook extends AbstractPaperProducts {
     public void setRuling(Ruling ruling) {
         this.ruling = ruling;
     }
+    
+    public String getHeaders() {
+        return super.getHeaders() + "oneColorOnCover" + "ruling";
+    }
 
 }

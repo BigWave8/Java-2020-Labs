@@ -29,4 +29,8 @@ public abstract class AbstractWritingInstruments extends AbstractWritingAccessor
         this.canChangeRod = canChangeRod;
     }
 
+    public String getHeaders() {
+        return super.getHeaders() + "lineThicknessInMillimeters" + "canChangeRod";
+    }
+
 }

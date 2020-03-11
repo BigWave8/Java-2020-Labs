@@ -27,12 +27,9 @@ class ShopManagerTest extends BaseStationeryMakerTest {
         assertEquals("Sigma", stationeries.get(3).getProducer());
     }
 
-    ShopManager shopManager = new ShopManager();
-    ShopManager.SortByBarCodeComparator barCodeComparator = shopManager.new SortByBarCodeComparator();
-
     @Test
     public void testSortByBarCode() {
-        ShopManager.sortByBarCode(stationeries, SortType.ASCENDING, barCodeComparator);
+        ShopManager.sortByBarCode(stationeries, SortType.ASCENDING);
         assertEquals("2384491", stationeries.get(0).getBarCode());
         assertEquals("2384492", stationeries.get(1).getBarCode());
         assertEquals("2384493", stationeries.get(2).getBarCode());

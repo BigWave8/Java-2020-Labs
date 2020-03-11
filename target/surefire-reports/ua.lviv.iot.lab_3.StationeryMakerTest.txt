@@ -1,0 +1,12 @@
+-------------------------------------------------------------------------------
+Test set: ua.lviv.iot.lab_3.StationeryMakerTest
+-------------------------------------------------------------------------------
+Tests run: 3, Failures: 0, Errors: 2, Skipped: 0, Time elapsed: 0.009 s <<< FAILURE! - in ua.lviv.iot.lab_3.StationeryMakerTest
+findStationeryForStudentTest  Time elapsed: 0.004 s  <<< ERROR!
+java.lang.IndexOutOfBoundsException: Index 2 out of bounds for length 1
+	at ua.lviv.iot.lab_3.StationeryMakerTest.findStationeryForStudentTest(StationeryMakerTest.java:41)
+
+findStationeryForHighShoolTest  Time elapsed: 0.002 s  <<< ERROR!
+java.lang.IndexOutOfBoundsException: Index 1 out of bounds for length 1
+	at ua.lviv.iot.lab_3.StationeryMakerTest.findStationeryForHighShoolTest(StationeryMakerTest.java:34)
+

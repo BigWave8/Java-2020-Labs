@@ -26,4 +26,8 @@ public class BodyColor {
         this.colorName = colorName;
     }
 
+    public String getHeaders() {
+        return "colorCount" + "colorName";
+    }
+
 }

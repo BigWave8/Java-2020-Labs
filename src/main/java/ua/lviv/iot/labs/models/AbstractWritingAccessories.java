@@ -48,4 +48,8 @@ public abstract class AbstractWritingAccessories extends AbstractStationery {
         this.bodyMaterial = bodyMaterial;
     }
 
+    public String getHeaders() {
+        return super.getHeaders() + "color" + "bodyShape" + bodyColor.getHeaders() + "bodyMaterial";
+    }
+
 }

@@ -28,5 +28,9 @@ public class Marker extends AbstractWritingInstruments {
     public void setType(String type) {
         this.type = type;
     }
+    
+    public String getHeaders() { 
+        return super.getHeaders() + "basic" + "type";
+   }
 
 }
