@@ -41,7 +41,13 @@ public class Pencil extends AbstractWritingInstruments {
     }
 
     public String getHeaders() {
-        return super.getHeaders() + "mechanical" + "hasEraser" + "hardnessOfState";
+        return super.getHeaders() + "," + "mechanical" + "," + "hasEraser" + ","
+                + "hardnessOfState";
+    }
+
+    public String toCSV() {
+        return super.toCSV() + "," + isMechanical() + "," + isHasEraser() + ","
+                + getHardnessOfState();
     }
 
 }

@@ -31,7 +31,11 @@ public class Pen extends AbstractWritingInstruments {
     }
 
     public String getHeaders() {
-        return super.getHeaders() + "thicknessOfRodInMillimeters" + "type";
+        return super.getHeaders() + "," + "thicknessOfRodInMillimeters" + "," + "type";
+    }
+
+    public String toCSV() {
+        return super.toCSV() + "," + getThicknessOfRodInMillimeters() + "," + getType();
     }
 
 }

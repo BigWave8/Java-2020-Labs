@@ -48,7 +48,12 @@ public abstract class AbstractStationery {
     }
 
     public String getHeaders() {
-        return "priceInHryvnia" + "producer" + "barCode" + "targetAge";
+        return "priceInHryvnia" + "," + "producer" + "," + "barCode" + "," + "targetAge";
+    }
+    
+    public String toCSV() {
+        return getPriceInHryvnia() + "," + getProducer() + "," + getBarCode() + ","
+                + getTargetAge();
     }
 
 }

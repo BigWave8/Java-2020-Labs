@@ -30,7 +30,11 @@ public class Paints extends AbstractWritingAccessories {
     }
 
     public String getHeaders() {
-        return super.getHeaders() + "type" + "numberOfColours";
+        return super.getHeaders() + "," + "type" + "," + "numberOfColours";
+    }
+
+    public String toCSV() {
+        return super.toCSV() + "," + getType() + "," + getNumberOfColours();
     }
 
 }

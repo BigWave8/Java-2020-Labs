@@ -40,7 +40,11 @@ public class Textbook extends AbstractPaperProducts {
     }
 
     public String getHeaders() {
-        return super.getHeaders() + "edition" + "circulation" + "subject";
+        return super.getHeaders() + "," + "edition" + "," + "circulation" + "," + "subject";
+    }
+
+    public String toCSV() {
+        return super.toCSV() + "," + getEdition() + "," + getCirculation() + "," + getSubject();
     }
 
 }

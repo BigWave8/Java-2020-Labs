@@ -38,7 +38,12 @@ public abstract class AbstractPaperProducts extends AbstractStationery {
     }
     
     public String getHeaders() {
-        return super.getHeaders() + "format" + "article" + "densityInGramsPerSguareMeter";
+        return super.getHeaders() + "," + "format" + "," + "article" + "," + "densityInGramsPerSguareMeter";
+    }
+    
+    public String toCSV() {
+        return super.toCSV() + "," + getFormat() + "," + getArticle() + ","
+                + getDensityInGramsPerSguareMeter();
     }
 
 }

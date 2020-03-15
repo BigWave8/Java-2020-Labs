@@ -49,7 +49,13 @@ public abstract class AbstractWritingAccessories extends AbstractStationery {
     }
 
     public String getHeaders() {
-        return super.getHeaders() + "color" + "bodyShape" + bodyColor.getHeaders() + "bodyMaterial";
+        return super.getHeaders() + "," + "color" + "," + "bodyShape" + "," + bodyColor.getHeaders() + "," + "bodyMaterial";
+    }
+    
+    public String toCSV() {
+        return super.toCSV() + "," + getColor() + "," + getBodyShape() + ","
+                + bodyColor.getColorCount() + "," + bodyColor.getColorName() + ","
+                + getBodyMaterial();
     }
 
 }

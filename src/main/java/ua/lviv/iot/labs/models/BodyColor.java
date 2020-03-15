@@ -27,7 +27,11 @@ public class BodyColor {
     }
 
     public String getHeaders() {
-        return "colorCount" + "colorName";
+        return "colorCount" + "," + "colorName";
+    }
+
+    public String toCSV() {
+        return getColorCount() + "," + getColorName();
     }
 
 }

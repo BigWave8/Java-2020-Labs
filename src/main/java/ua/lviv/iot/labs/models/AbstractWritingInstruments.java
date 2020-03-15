@@ -30,7 +30,11 @@ public abstract class AbstractWritingInstruments extends AbstractWritingAccessor
     }
 
     public String getHeaders() {
-        return super.getHeaders() + "lineThicknessInMillimeters" + "canChangeRod";
+        return super.getHeaders() + "," + "lineThicknessInMillimeters" + "," + "canChangeRod";
+    }
+
+    public String toCSV() {
+        return super.toCSV() + "," + getLineThicknessInMillimeters() + "," + isCanChangeRod();
     }
 
 }
