@@ -12,15 +12,26 @@ public class StationeryWriter {
         this.textWriter = textWriter;
     }
 
-    public void writeToFile(List<AbstractStationery> stationeries) throws IOException {
-        textWriter.write(stationeries.get(0).getHeaders());
-        textWriter.write("\r\n");
-        for (AbstractStationery stationery : stationeries) {
-            textWriter.write(stationery.toCSV());
+    public void writeToFile(List<AbstractStationery> stationeries) {
+        try {
+            textWriter.write(stationeries.get(0).getHeaders());
             textWriter.write("\r\n");
+            for (AbstractStationery stationery : stationeries) {
+                textWriter.write(stationery.toCSV());
+                textWriter.write("\r\n");
+            }
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                textWriter.flush();
+                textWriter.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
         }
-        textWriter.flush();
-        textWriter.close();
     }
 
     @Override
