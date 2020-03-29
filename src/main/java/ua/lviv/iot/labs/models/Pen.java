@@ -2,16 +2,23 @@ package ua.lviv.iot.labs.models;
 
 public class Pen extends AbstractWritingInstruments {
     private int thicknessOfRodInMillimeters;
-    private Type type;
+    private TypeOfPen typeOfPen;
 
-    public Pen(double priceInHryvnia, String producer, String barCode, int targetAge, String color,
-            BodyShape bodyShape, BodyColor bodyColor, String bodyMaterial,
-            int lineThicknessInMillimeters, boolean canChangeRod, int thicknessOfRodInMillimeters,
-            Type type) {
-        super(priceInHryvnia, producer, barCode, targetAge, color, bodyShape, bodyColor,
-                bodyMaterial, lineThicknessInMillimeters, canChangeRod);
+    public Pen(double priceInHryvnia, String producer, String barCode, int targetAge, String color, BodyShape bodyShape,
+            BodyColor bodyColor, String bodyMaterial, int lineThicknessInMillimeters, boolean canChangeRod,
+            int thicknessOfRodInMillimeters, TypeOfPen typeOfPen) {
+        super(priceInHryvnia, producer, barCode, targetAge, color, bodyShape, bodyColor, bodyMaterial,
+                lineThicknessInMillimeters, canChangeRod);
         this.thicknessOfRodInMillimeters = thicknessOfRodInMillimeters;
-        this.type = type;
+        this.typeOfPen = typeOfPen;
+    }
+
+    public TypeOfPen getTypeOfPen() {
+        return typeOfPen;
+    }
+
+    public void setTypeOfPen(TypeOfPen typeOfPen) {
+        this.typeOfPen = typeOfPen;
     }
 
     public int getThicknessOfRodInMillimeters() {
@@ -22,20 +29,12 @@ public class Pen extends AbstractWritingInstruments {
         this.thicknessOfRodInMillimeters = thicknessOfRodInMillimeters;
     }
 
-    public Type getType() {
-        return type;
-    }
-
-    public void setType(Type type) {
-        this.type = type;
-    }
-
     public String getHeaders() {
-        return super.getHeaders() + "," + "thicknessOfRodInMillimeters" + "," + "type";
+        return super.getHeaders() + "," + "thicknessOfRodInMillimeters" + "," + "typeOfPen";
     }
 
     public String toCSV() {
-        return super.toCSV() + "," + getThicknessOfRodInMillimeters() + "," + getType();
+        return super.toCSV() + "," + getThicknessOfRodInMillimeters() + "," + getTypeOfPen();
     }
 
 }

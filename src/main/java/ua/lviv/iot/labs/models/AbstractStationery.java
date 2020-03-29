@@ -5,6 +5,15 @@ public abstract class AbstractStationery {
     private String producer;
     private String barCode;
     private int targetAge;
+    private int id;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public AbstractStationery(double priceInHryvnia, String producer, String barCode,
             int targetAge) {
