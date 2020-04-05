@@ -1,13 +1,31 @@
 package ua.lviv.iot.labs.models;
 
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.MappedSuperclass;
+
+@MappedSuperclass
 public abstract class AbstractStationery {
     private double priceInHryvnia;
     private String producer;
     private String barCode;
     private int targetAge;
 
-    public AbstractStationery(double priceInHryvnia, String producer, String barCode,
-            int targetAge) {
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private int id;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public AbstractStationery(double priceInHryvnia, String producer, String barCode, int targetAge) {
+
         super();
         this.priceInHryvnia = priceInHryvnia;
         this.producer = producer;
@@ -50,10 +68,8 @@ public abstract class AbstractStationery {
     public String getHeaders() {
         return "priceInHryvnia" + "," + "producer" + "," + "barCode" + "," + "targetAge";
     }
-    
-    public String toCSV() {
-        return getPriceInHryvnia() + "," + getProducer() + "," + getBarCode() + ","
-                + getTargetAge();
-    }
 
+    public String toCSV() {
+        return getPriceInHryvnia() + "," + getProducer() + "," + getBarCode() + "," + getTargetAge();
+    }
 }
