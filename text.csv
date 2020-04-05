@@ -1,0 +1,5 @@
+priceInHryvnia,producer,barCode,targetAge,color,bodyShape,colorCount,colorName,bodyMaterial,lineThicknessInMillimeters,canChangeRod,thicknessOfRodInMillimeters,typeOfPen
+20.0,Gelsone,2384493,18,blue,HEXAGON,1,Red,Plastik,2,false,6,GEL
+7.0,RADIUS,2384491,7,red,RECTANGLE,1,Blue,	Metal,2,true,12,GEL
+14.0,RADIUS,2384492,9,black,TRIANGLE,1,White,Plastik,2,false,8,GEL
+10.0,Sigma,2384494,15,violet,FIGURED,1,Red,Plastik,2,false,7,GEL
