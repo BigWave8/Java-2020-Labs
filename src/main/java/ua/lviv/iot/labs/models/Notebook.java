@@ -1,5 +1,8 @@
 package ua.lviv.iot.labs.models;
 
+import javax.persistence.Entity;
+
+@Entity
 public class Notebook extends AbstractPaperProducts {
     private boolean oneColorOnCover;
     private Ruling ruling;

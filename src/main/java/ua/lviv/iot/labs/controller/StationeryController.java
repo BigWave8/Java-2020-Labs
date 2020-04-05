@@ -1,10 +1,7 @@
 package ua.lviv.iot.labs.controller;
 
-import java.util.HashMap;
-import java.util.LinkedList;
 import java.util.List;
-import java.util.Map;
-import java.util.concurrent.atomic.AtomicInteger;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -15,48 +12,41 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import ua.lviv.iot.labs.models.AbstractStationery;
+
+import ua.lviv.iot.business.NotebookService;
 import ua.lviv.iot.labs.models.Notebook;
 
 @RequestMapping("/stationeries")
 @RestController
 public class StationeryController {
 
-    private Map<Integer, AbstractStationery> stationeries = new HashMap<Integer, AbstractStationery>();
-    private AtomicInteger idCounter = new AtomicInteger();
+    @Autowired
+    private NotebookService notebookService;
 
     @GetMapping
-    public List<AbstractStationery> getStationeries() {
-        return new LinkedList<AbstractStationery>(stationeries.values());
+    public List<Notebook> getStationeries() {
+        return notebookService.findAll();
     }
 
     @GetMapping(path = "/{id}")
-    public AbstractStationery getStationery(@PathVariable("id") Integer stationeriesId) {
-        System.out.println(stationeriesId);
-        return stationeries.get(stationeriesId);
+    public Notebook getNotebook(@PathVariable("id") Integer notebookId) {
+        return notebookService.findNotebook(notebookId);
     }
 
     @PostMapping
-    public AbstractStationery createStationery(@RequestBody Notebook stationery) {
-        stationery.setId(idCounter.incrementAndGet());
-        stationeries.put(stationery.getId(), stationery);
-        return stationery;
+    public Notebook createNotebook(@RequestBody Notebook notebook) {
+        return notebookService.createNotebook(notebook);
     }
 
     @DeleteMapping(path = "/{id}")
-    public ResponseEntity<AbstractStationery> deleteStationery(@PathVariable("id") Integer stationeriesId) {
-        HttpStatus status = stationeries.remove(stationeriesId) == null ? HttpStatus.NOT_FOUND : HttpStatus.OK;
+    public ResponseEntity<Notebook> deleteNotebook(@PathVariable("id") Integer notebookId) {
+        HttpStatus status = notebookService.deleteNotebook(notebookId);
         return ResponseEntity.status(status).build();
-
     }
 
     @PutMapping(path = "/{id}")
-    public ResponseEntity<AbstractStationery> updateStationery(@PathVariable("id") Integer stationeriesId,
+    public ResponseEntity<Notebook> updateNotebook(@PathVariable("id") Integer notebookId,
             @RequestBody Notebook stationery) {
-        stationery.setId(stationeriesId);
-        HttpStatus status = stationeries.replace(stationeriesId, stationery) == null ? HttpStatus.NOT_FOUND
-                : HttpStatus.CREATED;
-        return ResponseEntity.status(status).build();
-
+        return notebookService.updateNotebook(stationery, notebookId);
     }
 }
