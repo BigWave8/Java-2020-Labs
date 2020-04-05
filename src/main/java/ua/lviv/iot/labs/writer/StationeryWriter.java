@@ -20,7 +20,6 @@ public class StationeryWriter {
                 textWriter.write(stationery.toCSV());
                 textWriter.write("\r\n");
             }
-
         } catch (IOException e) {
             e.printStackTrace();
         } finally {
@@ -30,7 +29,6 @@ public class StationeryWriter {
             } catch (IOException e) {
                 e.printStackTrace();
             }
-
         }
     }
 
@@ -38,5 +36,4 @@ public class StationeryWriter {
     public String toString() {
         return textWriter.toString();
     }
-
 }

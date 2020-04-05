@@ -25,6 +25,7 @@ public abstract class AbstractStationery {
     }
 
     public AbstractStationery(double priceInHryvnia, String producer, String barCode, int targetAge) {
+
         super();
         this.priceInHryvnia = priceInHryvnia;
         this.producer = producer;
@@ -71,5 +72,4 @@ public abstract class AbstractStationery {
     public String toCSV() {
         return getPriceInHryvnia() + "," + getProducer() + "," + getBarCode() + "," + getTargetAge();
     }
-
 }
