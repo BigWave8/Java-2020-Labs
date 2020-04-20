@@ -51,4 +51,3 @@ public class NotebookController {
                 : HttpStatus.NOT_FOUND;
         return new ResponseEntity<Notebook>(notebook, status);
     }
-}
