@@ -45,7 +45,9 @@ public class BrushController {
 
     @PutMapping(path = "/{id}")
     public ResponseEntity<Brush> updateBrush(@PathVariable("id") Integer brushId, @RequestBody Brush brush) {
-        HttpStatus status = brushService.updateStationery(brushId, brush) != null ? HttpStatus.OK : HttpStatus.NOT_FOUND;
-        return new ResponseEntity<Brush>(status);
+        brush.setId(brushId);
+        HttpStatus status = brushService.updateStationery(brushId, brush) != null ? HttpStatus.OK
+                : HttpStatus.NOT_FOUND;
+        return new ResponseEntity<Brush>(brush, status);
     }
 }

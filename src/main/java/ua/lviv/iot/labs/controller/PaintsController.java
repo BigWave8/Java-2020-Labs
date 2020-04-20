@@ -45,9 +45,10 @@ public class PaintsController {
 
     @PutMapping(path = "/{id}")
     public ResponseEntity<Paints> updatePaints(@PathVariable("id") Integer paintId, @RequestBody Paints paint) {
+        paint.setId(paintId);
         HttpStatus status = paintsService.updateStationery(paintId, paint) != null ? HttpStatus.OK
                 : HttpStatus.NOT_FOUND;
-        return new ResponseEntity<Paints>(status);
+        return new ResponseEntity<Paints>(paint, status);
     }
 
 }
