@@ -45,8 +45,9 @@ public class StickerController {
 
     @PutMapping(path = "/{id}")
     public ResponseEntity<Sticker> updateSticker(@PathVariable("id") Integer stickerId, @RequestBody Sticker sticker) {
+        sticker.setId(stickerId);
         HttpStatus status = stickerService.updateStationery(stickerId, sticker) != null ? HttpStatus.OK
                 : HttpStatus.NOT_FOUND;
-        return new ResponseEntity<Sticker>(status);
+        return new ResponseEntity<Sticker>(sticker, status);
     }
 }

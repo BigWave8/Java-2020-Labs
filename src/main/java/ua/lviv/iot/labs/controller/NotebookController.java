@@ -46,8 +46,9 @@ public class NotebookController {
     @PutMapping(path = "/{id}")
     public ResponseEntity<Notebook> updateNotebook(final @PathVariable("id") Integer notebookId,
             @RequestBody Notebook notebook) {
+        notebook.setId(notebookId);
         HttpStatus status = notebookService.updateStationery(notebookId, notebook) != null ? HttpStatus.OK
                 : HttpStatus.NOT_FOUND;
-        return new ResponseEntity<Notebook>(status);
+        return new ResponseEntity<Notebook>(notebook, status);
     }
 }
