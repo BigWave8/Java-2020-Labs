@@ -24,27 +24,29 @@ public class StickerController {
 
     @GetMapping
     public List<Sticker> getSticker() {
-        return stickerService.findAll();
+        return stickerService.getAllStationeries();
     }
 
     @GetMapping(path = "/{id}")
     public Sticker getSticker(@PathVariable("id") Integer stickerId) {
-        return stickerService.findSticker(stickerId);
+        return stickerService.getStationery(stickerId);
     }
 
     @PostMapping
     public Sticker createSticker(@RequestBody Sticker sticker) {
-        return stickerService.createSticker(sticker);
+        return stickerService.createStationery(sticker);
     }
 
     @DeleteMapping(path = "/{id}")
     public ResponseEntity<Sticker> deleteSticker(@PathVariable("id") Integer stickerId) {
-        HttpStatus status = stickerService.deleteSticker(stickerId);
-        return ResponseEntity.status(status).build();
+        HttpStatus status = stickerService.deleteStationery(stickerId) ? HttpStatus.OK : HttpStatus.NOT_FOUND;
+        return new ResponseEntity<Sticker>(status);
     }
 
     @PutMapping(path = "/{id}")
     public ResponseEntity<Sticker> updateSticker(@PathVariable("id") Integer stickerId, @RequestBody Sticker sticker) {
-        return stickerService.updateSticker(sticker, stickerId);
+        HttpStatus status = stickerService.updateStationery(stickerId, sticker) != null ? HttpStatus.OK
+                : HttpStatus.NOT_FOUND;
+        return new ResponseEntity<Sticker>(status);
     }
 }

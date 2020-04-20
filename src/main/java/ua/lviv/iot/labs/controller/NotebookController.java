@@ -24,28 +24,30 @@ public class NotebookController {
 
     @GetMapping
     public List<Notebook> getNotebooks() {
-        return notebookService.findAll();
+        return notebookService.getAllStationeries();
     }
 
     @GetMapping(path = "/{id}")
-    public Notebook getNotebook(@PathVariable("id") Integer notebookId) {
-        return notebookService.findNotebook(notebookId);
+    public Notebook getNotebook(final @PathVariable("id") Integer notebookId) {
+        return notebookService.getStationery(notebookId);
     }
 
     @PostMapping
-    public Notebook createNotebook(@RequestBody Notebook notebook) {
-        return notebookService.createNotebook(notebook);
+    public Notebook createNotebook(final @RequestBody Notebook notebook) {
+        return notebookService.createStationery(notebook);
     }
 
     @DeleteMapping(path = "/{id}")
-    public ResponseEntity<Notebook> deleteNotebook(@PathVariable("id") Integer notebookId) {
-        HttpStatus status = notebookService.deleteNotebook(notebookId);
-        return ResponseEntity.status(status).build();
+    public ResponseEntity<Notebook> deleteNotebook(final @PathVariable("id") Integer notebookId) {
+        HttpStatus status = notebookService.deleteStationery(notebookId) ? HttpStatus.OK : HttpStatus.NOT_FOUND;
+        return new ResponseEntity<Notebook>(status);
     }
 
     @PutMapping(path = "/{id}")
-    public ResponseEntity<Notebook> updateNotebook(@PathVariable("id") Integer notebookId,
+    public ResponseEntity<Notebook> updateNotebook(final @PathVariable("id") Integer notebookId,
             @RequestBody Notebook notebook) {
-        return notebookService.updateNotebook(notebook, notebookId);
+        HttpStatus status = notebookService.updateStationery(notebookId, notebook) != null ? HttpStatus.OK
+                : HttpStatus.NOT_FOUND;
+        return new ResponseEntity<Notebook>(status);
     }
 }
