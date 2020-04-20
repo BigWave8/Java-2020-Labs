@@ -24,28 +24,30 @@ public class PaintsController {
 
     @GetMapping
     public List<Paints> getPaints() {
-        return paintsService.findAll();
+        return paintsService.getAllStationeries();
     }
 
     @GetMapping(path = "/{id}")
-    public Paints getPaints(@PathVariable("id") Integer paintsId) {
-        return paintsService.findPaints(paintsId);
+    public Paints getPaints(@PathVariable("id") Integer paintId) {
+        return paintsService.getStationery(paintId);
     }
 
     @PostMapping
-    public Paints createPaints(@RequestBody Paints paints) {
-        return paintsService.createPaints(paints);
+    public Paints createPaints(@RequestBody Paints paint) {
+        return paintsService.createStationery(paint);
     }
 
     @DeleteMapping(path = "/{id}")
-    public ResponseEntity<Paints> deletePaints(@PathVariable("id") Integer paintsId) {
-        HttpStatus status = paintsService.deletePaints(paintsId);
-        return ResponseEntity.status(status).build();
+    public ResponseEntity<Paints> deletePaints(@PathVariable("id") Integer paintId) {
+        HttpStatus status = paintsService.deleteStationery(paintId) ? HttpStatus.OK : HttpStatus.NOT_FOUND;
+        return new ResponseEntity<Paints>(status);
     }
 
     @PutMapping(path = "/{id}")
-    public ResponseEntity<Paints> updatePaints(@PathVariable("id") Integer paintsId, @RequestBody Paints paints) {
-        return paintsService.updatePaints(paints, paintsId);
+    public ResponseEntity<Paints> updatePaints(@PathVariable("id") Integer paintId, @RequestBody Paints paint) {
+        HttpStatus status = paintsService.updateStationery(paintId, paint) != null ? HttpStatus.OK
+                : HttpStatus.NOT_FOUND;
+        return new ResponseEntity<Paints>(status);
     }
 
 }
