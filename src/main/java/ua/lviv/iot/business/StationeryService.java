@@ -3,19 +3,19 @@ package ua.lviv.iot.business;
 import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public abstract class StationeryService<Service> {
+public abstract class StationeryService<T> {
 
-    protected abstract JpaRepository<Service, Integer> jpaRepository();
+    protected abstract JpaRepository<T, Integer> jpaRepository();
 
-    public Service createStationery(Service stationery) {
+    public T createStationery(T stationery) {
         return jpaRepository().save(stationery);
     }
 
-    public Service getStationery(Integer stationeryId) {
+    public T getStationery(Integer stationeryId) {
         return jpaRepository().findById(stationeryId).orElse(null);
     }
 
-    public List<Service> getAllStationeries() {
+    public List<T> getAllStationeries() {
         return jpaRepository().findAll();
     }
 
@@ -27,10 +27,11 @@ public abstract class StationeryService<Service> {
         return false;
     }
 
-    public Service updateStationery(Integer stationeryId, Service stationery) {
+    public T updateStationery(Integer stationeryId, T stationery) {
         if (jpaRepository().existsById(stationeryId)) {
+            T oldStationery = jpaRepository().findById(stationeryId).get();
             jpaRepository().save(stationery);
-            return stationery;
+            return oldStationery;
         }
         return null;
     }
